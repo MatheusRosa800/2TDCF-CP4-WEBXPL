@@ -1,7 +1,7 @@
-# FIAP - 4° Checkpoint - 
+# FIAP - 4° Checkpoint - API Security 
 
 ## Introdução
-Checkpoint realizado com o intuito de colocar em prática todos os conhecimentos manipulação de listas e estruturas de repetição adquiridos na matéria de Conding for Security, ministrada pelo [Professor Fábio Cabrini](https://www.linkedin.com/in/fabio-cabrini/).
+Checkpoint realizado com o intuito de colocar em prática todos os conhecimentos de vulnerabilidade em API's adquiridos na matéria de WEB APPS e MOBILE EXPLOITATION, ministrada pelo [Professor Rafael Trassi ](https://www.linkedin.com/in/rafael-trassi/).
 
 ## Feito por
 - Matheus Rosa
