@@ -20,3 +20,16 @@ Cada aluno deverá:
 - Discutir brevemente sobre possíveis correções para esta falha (não precisa ser no código, pode apenas explicar o que resolveria).
 
 
+1 endpoint
+
+
+o primeiro endpoint que encontrei vulneravel foi na area de compras /shop
+
+utilizando o burp para analisar alguns entrypoints descobri que ao efetuar uma compra e ir nos detalhes da compra. A api utiliza um simples order_id=X
+
+alterando este numero para outros é possivel ver detalhes de outras compras de outras pessoas incluindo dados sensiveis
+
+exemplo:
+/workshop/api/shop/orders/1
+
+img2
