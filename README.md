@@ -127,6 +127,10 @@ Logo depois segui os seguintes passos:
 
 
 # Por que a falha ocorre?
+
+Broken User Authentication
+
+
 # Linhas vulneráveis
 # Script 
 # O que resolveria?
