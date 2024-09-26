@@ -25,7 +25,7 @@ Optamos por explorar os serviços do crAPI.
 
 ![image](https://github.com/user-attachments/assets/678bcc7c-952c-4d11-9de0-d96ae1ee68b1)
 
-Após criar uma conta e fazer o login. Iniciei o burpsuit e fui em busca de endtrypoints.
+Após criar uma conta e fazer o login. Iniciei o burpsuit e fui em busca de endpoints.
 
 ## 1° endpoint - /forum & /location
 
@@ -57,7 +57,7 @@ Response:
 {"carId":"4bae9968-ec7f-4de3-a3a0-ba1b2ab5e5e5","vehicleLocation":{"id":3,"latitude":"37.746880","longitude":"-84.301460"},"fullName":"Robot","email":"robot001@example.com"}
 ````
 
-Além de responder com as coordenadas do veiculo, ele tambem devolve o email e usuario.
+Além de responder com as coordenadas do veiculo, ele tambem devolve o email e usuário.
 
 # Por que a falha ocorre?
 # Linhas vulneráveis
@@ -65,8 +65,59 @@ Além de responder com as coordenadas do veiculo, ele tambem devolve o email e u
 # O que resolveria?
 
 
-## 2° endpoint
 
 
 
+
+
+
+
+
+
+
+## 2° endpoint - /reset-password & /check-otp
+
+Com o email que tinha, fui atras de endpoints que uilizavam o email. 
+
+1. /change-email - Nada de mais
+2. /change-password - Nada de mais
+3. reset-password - Possível endpoint
+
+O /reset-password era encontrado na tela de login clicando no campo "forgot password"
+
+![image](https://github.com/user-attachments/assets/57bd4446-832f-4ff2-95c6-2543937d108f)
+
+Na tela pedia o email, iria enviar um OTP de verificação e logo depois seria possível alterar a senha.
+
+O OTP enviado para confirmar o email é um número de 4 caracteres e facil de ser quebrado.
+
+![image](https://github.com/user-attachments/assets/72c0d3c1-0720-4efa-8151-bb7843182b58)
+
+Iniciei o bruteforce mas depois de poucas tentativas recebi um erro.
+
+![image](https://github.com/user-attachments/assets/a8c6e553-f009-4d1d-a50c-00ca49a64acd)
+
+A API estava segura contra brute-force.
+
+Achei que não teria como, acabei desistindo e fui explorar outros endpoints. Pórem analisando outros requests, vi que algumas páginas utilizavam **API V2** e outras **API V3**.
+
+Decidi voltar para a senha e tentar trocar por v2.
+
+````
+POST /identity/api/auth/v2/check-otp HTTP/1.1
+````
+
+E funcionou. obtive a resposta de OTP incorreto.
+
+Testei novamente o bruteforce e vi que a versão 2 da API não tinha proteção.
+
+Logo depois segui os seguintes passos:
+
+1. Peguei o email que consegui do usuário 
+2. Fiz o bruteforce do OTP usando o Intruder do Burp 
+3. Esperei muito tempo até o match do OTP
+4. Consegui alterar a senha 
+5. Entrei na conta do ROBOT.
+
+![image](https://github.com/user-attachments/assets/15430dc0-de73-4ddd-b306-2d645bf5d730)
 
