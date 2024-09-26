@@ -59,22 +59,21 @@ Response:
 
 Além de responder com as coordenadas do veiculo, ele tambem devolve o email e usuário.
 
-### Por que a falha ocorre?
+## Por que a falha ocorre?
 
 chamada "Broken Object Level Authorization" (BOLA), ocorre quando uma API não implementa corretamente os controles de acesso para verificar se o usuário que está fazendo uma solicitação tem permissão para acessar ou modificar um recurso específico (neste caso, o vehicle ID e as informações associadas).
 
-
-### Linhas vulneráveis
-
-### Script 
+## Linhas vulneráveis
 
 
-### O que resolveria?
+## Script 
 
+
+## O que resolveria?
 
 Antes de retornar as informações do veículo, a API deve verificar se o vehicleid pertence ao usuário autenticado. Se o veículo não for do usuário, a API deve retornar uma mensagem de erro ou status 403 Forbidden.
 
-Desta dorma, o usuário comum só pode acessar os veículos que ele mesmo registrou.
+Desta forma, o usuário comum só pode acessar os veículos que ele mesmo registrou.
 
 
 Exemplo:
@@ -85,9 +84,6 @@ if (vehicle.getOwnerId() != authenticatedUser.getId()) {
     throw new UnauthorizedAccessException("Você não tem permissão para acessar este veículo.");
 }
 ````
-
-
-
 
 ## 2° endpoint - /reset-password & /check-otp
 
@@ -135,16 +131,30 @@ Logo depois segui os seguintes passos:
 
 ![image](https://github.com/user-attachments/assets/15430dc0-de73-4ddd-b306-2d645bf5d730)
 
-
 ![image](https://github.com/user-attachments/assets/f3128ce1-ea70-484f-b346-3b1546571078)
 
+## Por que a falha ocorre?
+
+A falha ocorre devido a dois tipos de vulnerabilidades na API: Broken Function Level Authorization (BFLA), pela mudança de versão do endpoint, e Broken User Authentication, ao realizar brute force em um código de segurança. A exploração dessas falhas pode ser bem-sucedida devido a alguns fatores:
+
+1. OTP facil de ser explorado.
+2. Inconsistencia entre as APIS v2 e v3.
+3. Falta de Anti-bruteforce
 
 
-# Por que a falha ocorre?
-
-Broken User Authentication
+## Linhas vulneráveis
 
 
-# Linhas vulneráveis
-# Script 
-# O que resolveria?
+## Script 
+
+
+## O que resolveria?
+
+Para resolver essas vulnerabilidades e proteger a API contra exploração, deveriam ser concertadas as seguintes funcionalidades
+
+***Fortalecer o OTP***: Aumentar a complexidade e o comprimento do código OTP para dificultar ataques de força bruta, como utilizar códigos alfanuméricos de maior comprimento.
+Implementar um limite de tentativas para a inserção do OTP, bloqueando temporariamente o usuário após um certo número de tentativas falhas.
+
+***Garantir consistência entre as versões da API (v2 e v3)***: Implementar uma estratégia de descontinuação de APIs antigas, eliminando ou limitando o uso de versões mais antigas da API que podem ser exploradas. 
+
+***Implementar mecanismos de Anti-bruteforce***: Adicionar mecanismos para detectar e bloquear tentativas de brute force, como introduzir CAPTCHAs após várias tentativas falhas de autenticação ou Utilizar rate limiting, que restringe o número de requisições em um determinado período de tempo, reduzindo a efetividade de ataques de força bruta.
