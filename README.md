@@ -60,6 +60,8 @@ Response:
 Além de responder com as coordenadas do veiculo, ele tambem devolve o email e usuário.
 
 # Por que a falha ocorre?
+
+Bola 
 # Linhas vulneráveis
 # Script 
 # O que resolveria?
