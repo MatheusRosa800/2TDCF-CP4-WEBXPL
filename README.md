@@ -109,12 +109,12 @@ POST /identity/api/auth/v2/check-otp HTTP/1.1
 
 E funcionou. obtive a resposta de OTP incorreto.
 
-Testei novamente o bruteforce e vi que a versão 2 da API não tinha proteção.
+Testei novamente o brute-force e vi que a versão 2 da API não tinha proteção.
 
 Logo depois segui os seguintes passos:
 
 1. Peguei o email que consegui do usuário 
-2. Fiz o bruteforce do OTP usando o Intruder do Burp 
+2. Fiz o brute-force do OTP usando o Intruder do Burp 
 3. Esperei muito tempo até o match do OTP
 4. Consegui alterar a senha 
 5. Entrei na conta do ROBOT.
