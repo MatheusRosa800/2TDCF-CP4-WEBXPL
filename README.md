@@ -65,16 +65,23 @@ chamada "Broken Object Level Authorization" (BOLA), ocorre quando uma API não i
 
 ## Linhas vulneráveis
 
-
-## Script 
-
+````
+  @GetMapping("/vehicle/{carId}/location")
+  public ResponseEntity<?> getLocationBOLA(@PathVariable("carId") UUID carId) {
+    VehicleLocationResponse vehicleDetails = vehicleService.getVehicleLocation(carId);
+    if (vehicleDetails != null) return ResponseEntity.ok().body(vehicleDetails);
+    else
+      return ResponseEntity.status(HttpStatus.NOT_FOUND)
+          .body(new CRAPIResponse(UserMessage.DID_NOT_GET_VEHICLE_FOR_USER));
+  }
+}
+````
 
 ## O que resolveria?
 
 Antes de retornar as informações do veículo, a API deve verificar se o vehicleid pertence ao usuário autenticado. Se o veículo não for do usuário, a API deve retornar uma mensagem de erro ou status 403 Forbidden.
 
 Desta forma, o usuário comum só pode acessar os veículos que ele mesmo registrou.
-
 
 Exemplo:
 
@@ -141,12 +148,25 @@ A falha ocorre devido a dois tipos de vulnerabilidades na API: Broken Function L
 2. Inconsistencia entre as APIS v2 e v3.
 3. Falta de Anti-bruteforce
 
-
 ## Linhas vulneráveis
 
 
-## Script 
-
+````
+  /**
+   * @param otpForm contains otp, updated password and user email
+   * @return success and failure response its non secure API for attacker. in this attacker can
+   *     enter 'n' number of times invalid otp
+   */
+  @PostMapping("/v2/check-otp")
+  public ResponseEntity<CRAPIResponse> checkOtp(@RequestBody OtpForm otpForm) {
+    CRAPIResponse validateOtpResponse = otpService.validateOtp(otpForm);
+    if (validateOtpResponse != null && validateOtpResponse.getStatus() == 200) {
+      return ResponseEntity.status(HttpStatus.OK).body(validateOtpResponse);
+    } else {
+      return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(validateOtpResponse);
+    }
+  }
+````
 
 ## O que resolveria?
 
