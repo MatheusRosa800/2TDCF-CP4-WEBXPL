@@ -61,8 +61,11 @@ Além de responder com as coordenadas do veiculo, ele tambem devolve o email e u
 
 # Por que a falha ocorre?
 
-Bola 
+chamada "Broken Object Level Authorization" (BOLA), ocorre quando uma API não implementa corretamente os controles de acesso para verificar se o usuário que está fazendo uma solicitação tem permissão para acessar ou modificar um recurso específico (neste caso, o vehicle ID e as informações associadas).
+
+
 # Linhas vulneráveis
+
 # Script 
 # O que resolveria?
 
