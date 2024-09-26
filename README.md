@@ -121,3 +121,11 @@ Logo depois segui os seguintes passos:
 
 ![image](https://github.com/user-attachments/assets/15430dc0-de73-4ddd-b306-2d645bf5d730)
 
+
+
+
+
+# Por que a falha ocorre?
+# Linhas vulneráveis
+# Script 
+# O que resolveria?
