@@ -41,16 +41,6 @@ Response:
 {"id":"6KhWWNXSdNgK7HVJFZ6E3B","title":"Title 3","content":"Hello world 3","author":{"nickname":"Robot","email":"robot001@example.com","vehicleid":"4bae9968-ec7f-4de3-a3a0-ba1b2ab5e5e5","profile_pic_url":"","created_at":"2024-09-23T23:01:33.352Z"},"comments":[],"authorid":3,"CreatedAt":"2024-09-23T23:01:33.352Z"}
 ````
 
-# Por que a falha ocorre?
-
-BOLA 
-
-# Linhas vulneráveis
-# Script 
-# O que resolveria?
-
-## 2° endpoint - /location
-
 O que me chamou a atenção foi o  **vehicleid**
 
 Continuando o processo de análise e procurando onde poderia usar o ID, cadastrei o veiculo enviado no MailHog e notei que a API utiliza o vehicleid para puxar o veiculo e utilizar a api do google maps para mostrar a localização dele.
@@ -73,6 +63,9 @@ Além de responder com as coordenadas do veiculo, ele tambem devolve o email e u
 # Linhas vulneráveis
 # Script 
 # O que resolveria?
+
+
+## 2° endpoint
 
 
 
