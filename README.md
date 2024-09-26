@@ -27,7 +27,7 @@ Optamos por explorar os serviços do crAPI.
 
 Após criar uma conta e fazer o login. Iniciei o burpsuit e fui em busca de endtrypoints.
 
-## 1° endpoint - /forum
+## 1° endpoint - /forum & /location
 
 ![image](https://github.com/user-attachments/assets/c9e1a8b1-cad3-4abd-9f60-b39ccd9d81bb)
 
