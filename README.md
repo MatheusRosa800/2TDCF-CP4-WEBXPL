@@ -178,3 +178,16 @@ Implementar um limite de tentativas para a inserção do OTP, bloqueando tempora
 ***Garantir consistência entre as versões da API (v2 e v3)***: Implementar uma estratégia de descontinuação de APIs antigas, eliminando ou limitando o uso de versões mais antigas da API que podem ser exploradas. 
 
 ***Implementar mecanismos de Anti-bruteforce***: Adicionar mecanismos para detectar e bloquear tentativas de brute force, como introduzir CAPTCHAs após várias tentativas falhas de autenticação ou Utilizar rate limiting, que restringe o número de requisições em um determinado período de tempo, reduzindo a efetividade de ataques de força bruta.
+
+# Bonus!
+
+##  Como a integração (Postman + Burpsuit) pode ajudar na descoberta de falhas?
+
+1. ***Facilidade de Interação e Testes***: Postman fornece uma interface amigável para testar APIs, mas Burp Suite adiciona uma camada de segurança ao monitorar todas as requisições e respostas. Juntos, permitem testar comportamentos inesperados.
+
+2. ***Modificação de Requisições***: A integração possibilita modificar parâmetros em tempo real e explorar diferentes cenários de vulnerabilidade, como controle de acesso (API5:2019 Broken Function Level Authorization).
+
+3. ***Interceptação de Tráfego***: Burp captura o tráfego entre o cliente e o servidor, permitindo descobrir headers, tokens e informações sensíveis que podem estar sendo mal gerenciadas pela API.
+
+Essa integração é essencial para descobrir falhas que não seriam percebidas apenas com testes manuais ou unitários, pois permite que você veja como a API está lidando com as requisições na prática e te dá controle total para manipular essas requisições em tempo real.
+
