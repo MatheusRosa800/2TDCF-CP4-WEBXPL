@@ -59,23 +59,32 @@ Response:
 
 Além de responder com as coordenadas do veiculo, ele tambem devolve o email e usuário.
 
-# Por que a falha ocorre?
+### Por que a falha ocorre?
 
 chamada "Broken Object Level Authorization" (BOLA), ocorre quando uma API não implementa corretamente os controles de acesso para verificar se o usuário que está fazendo uma solicitação tem permissão para acessar ou modificar um recurso específico (neste caso, o vehicle ID e as informações associadas).
 
 
-# Linhas vulneráveis
+### Linhas vulneráveis
 
-# Script 
-# O que resolveria?
-
+### Script 
 
 
+### O que resolveria?
 
 
+Antes de retornar as informações do veículo, a API deve verificar se o vehicleid pertence ao usuário autenticado. Se o veículo não for do usuário, a API deve retornar uma mensagem de erro ou status 403 Forbidden.
+
+Desta dorma, o usuário comum só pode acessar os veículos que ele mesmo registrou.
 
 
+Exemplo:
 
+````
+// Verificando se o veículo pertence ao usuário autenticado
+if (vehicle.getOwnerId() != authenticatedUser.getId()) {
+    throw new UnauthorizedAccessException("Você não tem permissão para acessar este veículo.");
+}
+````
 
 
 
