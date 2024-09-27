@@ -57,7 +57,7 @@ Response:
 {"carId":"4bae9968-ec7f-4de3-a3a0-ba1b2ab5e5e5","vehicleLocation":{"id":3,"latitude":"37.746880","longitude":"-84.301460"},"fullName":"Robot","email":"robot001@example.com"}
 ````
 
-Além de responder com as coordenadas do veiculo, ele tambem devolve o email e usuário.
+Além de responder com as coordenadas do veículo, ele tambem devolve o email e usuário.
 
 ## Por que a falha ocorre?
 
@@ -94,7 +94,7 @@ if (vehicle.getOwnerId() != authenticatedUser.getId()) {
 
 ## 2° endpoint - /reset-password & /check-otp
 
-Com o email que tinha, fui atras de endpoints que uilizavam o email. 
+Com o email que tinha, fui atrás de endpoints que uilizavam o email. 
 
 1. /change-email - Nada de mais
 2. /change-password - Nada de mais
@@ -110,7 +110,7 @@ O OTP enviado para confirmar o email é um número de 4 caracteres e facil de se
 
 ![image](https://github.com/user-attachments/assets/72c0d3c1-0720-4efa-8151-bb7843182b58)
 
-Iniciei o bruteforce mas depois de poucas tentativas recebi um erro.
+Utilizei o Intruder do burp utilizando um attack snipper com uma lista numérica mas ao iniciar o bruteforce, depois de poucas tentativas recebi um erro.
 
 ![image](https://github.com/user-attachments/assets/a8c6e553-f009-4d1d-a50c-00ca49a64acd)
 
@@ -131,8 +131,8 @@ Testei novamente o brute-force e vi que a versão 2 da API não tinha proteção
 Logo depois segui os seguintes passos:
 
 1. Peguei o email que consegui do usuário 
-2. Fiz o brute-force do OTP usando o Intruder do Burp 
-3. Esperei muito tempo até o match do OTP
+2. Fiz o brute-force do OTP usando o Intruder do Burp. (fiz alguns teste e a maioria dos OTP eram numeros altos, decidi comecar o attack com 9999 e ir diminuido)
+3. Esperei um bom tempo até o match do OTP
 4. Consegui alterar a senha 
 5. Entrei na conta do ROBOT.
 
