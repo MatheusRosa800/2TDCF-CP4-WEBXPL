@@ -3,9 +3,9 @@
 ## Introdução
 Checkpoint realizado com o intuito de colocar em prática todos os conhecimentos de vulnerabilidade em API's adquiridos na matéria de WEB APPS e MOBILE EXPLOITATION, ministrada pelo [Professor Rafael Trassi ](https://www.linkedin.com/in/rafael-trassi/).
 
-## Feito por
-- Matheus Rosa
-- Pedro Augusto
+## Feito por 
+- Matheus Rosa RM98635
+- Pedro Augusto RM97828
 
 ## Desafio
 Os alunos deverão realizar uma análise de segurança em uma API simples da lista a seguir baseando-se no OWASP API Security TOP 10.
